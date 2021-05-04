@@ -1,4 +1,4 @@
-// Person Attraction in Romanian 
+// Pumpkin//experimentwithRodica
 // Do show progress bar (fine! I give in)
 
 var showProgressBar = true;
@@ -9,7 +9,7 @@ var shuffleSequence = seq(
     'setcounter',
     'intro',
     'shared-intro',
-    sepWith("timeoutSep",rshuffle(startsWith('ATTRAGREEROMANIAN'),startsWith('filler'))),
+    sepWith("timeoutSep",rshuffle(startsWith('PUMPKINREFLEXIVE'),startsWith('filler'))),
     'debrief'
      );
 
@@ -25,47 +25,19 @@ var completionErrorMessage = "Eroare în trimiterea răspunsurilor dumneavoastr�
 
 // Controller settings.
 // Parameter settings taken from Staub 2009
-var defaults = [
-     "EPDashedSentence", {
-        mode: 'speeded acceptability',
-        display: 'in place',
-        blankText: '+',
-        wordTime: 1000,
-        wordPauseTime: 150
-        },
-        DS, {randomOrder: false,
-        presentHorizontally: true,
-        mode: 'speeded acceptability',
-        display: 'in place',
-        blankText: '+',
-        wordTime: 250,
-        wordPauseTime: 150,
-        timeout: 3000,
-        hasCorrect: false,
-        q: ''}
-];
 
-// Add breaks every 24 items
-function modifyRunningOrder(ro)
-{
-    for (var i = 0; i < ro.length; ++i)
-    {
-        if (i % 24 == 1
-            && i > 23
-            && i < 250)
-        {
-            ro[i].push(new DynamicElement(
-                "Message",
-                {html: "<p> Vă rugăm să luaţi o mică pauză. Apăsaţi orice tastă când sunteţi gata să începeţi din nou.</p>", transfer: "keypress"},
-            true));
-            ro[i].push(new DynamicElement(
-                "Separator",
-                {transfer: 2500, normalMessage: "Atenţie! Primul fragment de propoziţie din acest set va apărea pe ecran în curând."},
-            true));
-        }
+var defaults = [
+    "Separator", {
+        transfer: 1000,                                      // How long between sentences? (ms)
+        normalMessage: " "  // What is message presented between stims? Can be blank.
+    },
+    "AcceptabilityJudgment", 
+        as: ["a", "b", "c"],            
+        presentAsScale: false,                               /// Should it be presented as a scale? 'true' or 'false'
+        instructions: "Alegeţi una din variantele de mai sus.",    /// Brief instructions present on each trial
+               /// Labels on end-points of scale
     }
-    return ro;
-}
+];
 
 // Items array.
 var items = [
@@ -104,7 +76,7 @@ var items = [
 
 
 //// Shared experimental items + fillers
-[["ATTRAGREEROMANIAN-mismatchheadsg12",1], "EPDashedSentence", {s:"+"}, DS, {s:" Cartea de lângă noi mereu ",as: [['s','avem'],['k','are']]}], 
+[["ATTRAGREEROMANIAN-mismatchheadsg12",1], "AcceptabilityJudgment", {s:"+"}, DS, {s:"Care propoziţie poate fi continuată cu <intenţionat>?",as: [['s','avem'],['k','are']]}], 
 [["ATTRAGREEROMANIAN-mismatchheadsg3",1], "EPDashedSentence", {s:"+"}, DS, {s:"Cartea de lângă ei mereu ",as: [['s','au'],['k','are']]}], 
 [["ATTRAGREEROMANIAN-matchheadpl12",1], "EPDashedSentence", {s:"+"}, DS, {s:"Cărţile de lângă noi mereu ",as: [['s','avem'],['k','au']]}], 
 [["ATTRAGREEROMANIAN-matchheadpl3",1], "EPDashedSentence", {s:"+"}, DS, {s:"Cărţile de lângă ei mereu ",as: [['s','au'],['k','are']]}],     
