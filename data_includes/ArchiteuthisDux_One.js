@@ -9,7 +9,7 @@ var shuffleSequence = seq(
     'setcounter',
     'intro',
     'shared-intro',
-    sepWith("timeoutSep",rshuffle(startsWith('PUMPKINREFLEXIVE'),startsWith('filler'))),
+    sepWith("timeoutSep",rshuffle(startsWith('SAD'),startsWith('filler'))),
     'debrief'
      );
 
@@ -30,18 +30,11 @@ var defaults = [
     "Separator", {
         transfer: 1000,                                      // How long between sentences? (ms)
         normalMessage: " "  // What is message presented between stims? Can be blank.
-    },
-    "AcceptabilityJudgment", 
-        as: ["a", "b", "c"],            
-        presentAsScale: false,                               /// Should it be presented as a scale? 'true' or 'false'
-        instructions: "Alegeţi una din variantele de mai sus.",    /// Brief instructions present on each trial
-               /// Labels on end-points of scale
     }
 ];
 
 // Items array.
 var items = [
-["timeoutSep", Separator, { transfer: 1500, normalMessage: "", errorMessage: "Timed out. Vă rugăm să răspundeți mai rapid."}],
 
 ["consent", "Form", {consentRequired: true, html: {include: "consent.html"}}],
  ["setcounter", "__SetCounter__", { }],
@@ -56,24 +49,25 @@ var items = [
                    html: ["div",
                            ["p", "Hai să exersăm un pic înainte de a începe efectiv."]
                          ]}],
-['shared-intro', "EPDashedSentence", {s:"+"}, DS, {s:"Pisicuţele tigrate",as: [['s','sunt'],['k','este']]}, Separator, { transfer: 1500, normalMessage: "", errorMessage: "Timed out. Vă rugăm să răspundeți mai rapid."}],
+['shared-intro', "Question", {q:"Care propoziţie poate fi continuată cu <intenţionat>? ",as: ["Omul a căzuit.", "Omul a minţit.",
+                                                                                                            "Ambele"]},
 
 ['shared-intro', Message, {consentRequired: false,
                    html: ["div",
-                           ["p", "Cum vi s-a părut? Pur şi simplu alegeţi rapid varianta care vi se pare o continuare mai bună a propoziţiei."],
-                           ["p", "Multor vorbitori nativi de limba română li se pare că 'sunt' este o continuare mai firească a fragmentului anterior. Hai să mai exersăm un pic."],
+                           ["p", "Cum vi s-a părut? Pur şi simplu alegeţi varianta/variantele care credeţi că poate fi continuată/pot fi continuate cu <intenţionat>."],
+                           ["p", "Unor vorbitori nativi de limba română li se pare că doar propoziţia 'Omul a minţit' poate fi continuată cu <intenţionat>."],
+                           ["p", "Altor vorbitori li se pare că ambele propoziţii pot fi continuate cu <intenţionat>."],           
+                           ["p", "Hai să mai exersăm un pic."],
                          ]}],
-
-['shared-intro', "EPDashedSentence", {s:"+"}, DS, {s:"Zambila roz",as: [['s','miros'],['k','miroase']]}, Separator, { transfer: 1500, normalMessage: "", errorMessage: "Timed out. Vă rugăm să răspundeți mai rapid."}],
-['shared-intro', "EPDashedSentence", {s:"+"}, DS, {s:"Maria şi Ion",as: [['s','sunt'],['k','este']]}, Separator, { transfer: 1500, normalMessage: "", errorMessage: "Timed out. Vă rugăm să răspundeți mai rapid."}],
+['shared-intro', "Question", {q:"Care propoziţie poate fi continuată cu <intenţionat>?",as: ["Fata a rupt scaunul.", "Fata a murdărit scaunul.",
+                                                                                                            "Ambele"]},
+['shared-intro', "Question", {q:"Care propoziţie poate fi continuată cu <intenţionat>?", as: ["Actorul a murit.", "Actorul a urlat.",
+                                                                                                            "Ambele"]},
 
 ['shared-intro', Message, {consentRequired: false,
                    html: ["div",
                            ["p", "Bun, gata cu exersatul! Apăsaţi orice tastă când sunteţi gata să începeţi."]
                         ]}],
-
-['shared-intro',"Separator",{transfer: 2500, normalMessage: "Atenţie! Primul fragment de propoziţie din acest set va apărea pe ecran în curând."}],
-
 
 //// Shared experimental items + fillers
 [["SAD-aromapart",1], "Question", {q:"Care propoziţie poate fi continuată cu <intenţionat>? ",as: ["Maria s-a cireşit la cap.", "Maria s-a cireşit pe cap.",
@@ -96,7 +90,7 @@ var items = [
                                                                                                             "Ambele"]}}
 [["SAD-aromapart",2], "Question", {q:"Care propoziţie poate fi continuată cu <intenţionat>? ",as: ["Dumitru s-a piersicit la cap.", "Dumitru s-a piersicit pe cap.",
                                                                                                                         "Ambele"]}},
-[["SAD-aromapart",2], "Question", {q:"Care propoziţie poate fi continuată cu <intenţionat>? ",as: ["Dumitru s-a piersicit la faţă.", "Dumitru s-a piersicit pe faţă.",
+[["SAD-aromapart",2], "Question", {q:"Care propoziţie poate fi continuată cu <intenţionat>?",as: ["Dumitru s-a piersicit la faţă.", "Dumitru s-a piersicit pe faţă.",
                                                                                                                         "Ambele"]}},
 [["SAD-aromapart",2], "Question", {q:"Care propoziţie poate fi continuată cu <intenţionat>? ",as: ["Dumitru s-a piersicit la mȃini.", "Dumitru s-a piersicit pe mȃini.",
                                                                                                                         "Ambele"]}},
