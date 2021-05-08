@@ -42,8 +42,6 @@ var items = [
 ["debrief", "Form", {consentRequired: true, html: {include: "debrief.html"}}],
 
 ['shared-intro', "Form", {consentRequired: false, html: {include: "shared_intro1.html"}}],
-['shared-intro', "Form", {consentRequired: false, html: {include: "shared_intro2.html"}}],
-['shared-intro', "Form", {consentRequired: false, html: {include: "shared_intro3.html"}}],
 
 ['shared-intro', Message, {consentRequired: false,
                    html: ["div",
