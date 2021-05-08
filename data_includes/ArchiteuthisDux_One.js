@@ -15,7 +15,21 @@ var shuffleSequence = seq(
 
 // Using modified controller coded by Ethan Poole (Umass, 2017)
 // Disallows use of mouse for responses.
-var DS = 'EPDashedAcceptabilityJudgment';
+var defaults = [
+    "Separator", {
+        transfer: 1000,
+        normalMessage: "",
+        errorMessage: ""
+    },
+    "DashedSentence", {
+        mode: "self-paced reading"
+    },
+ 
+    "Question", {
+        hasCorrect: false
+    },
+    "Message", {
+        hideProgressBar: true
 
 //  Set the Prolific Academic Completion URL
 var sendingResultsMessage = "Vă rugăm să aşteptaţi. Răspunsurile dumneavoastră se trimit serverului."; 
