@@ -9,29 +9,11 @@ var shuffleSequence = seq(
     'setcounter',
     'intro',
     'shared-intro',
-    sepWith("timeoutSep",rshuffle(startsWith('SAD'),startsWith('filler'))),
+    sepWith(rshuffle(startsWith('SAD'),startsWith('filler'))),
     'debrief'
      );
 
-// Using modified controller coded by Ethan Poole (Umass, 2017)
-// Disallows use of mouse for responses.
-var defaults = [
-    "Separator", {
-        transfer: 1000,
-        normalMessage: "",
-        errorMessage: ""
-    },
-    "DashedSentence", {
-        mode: "self-paced reading"
-    },
- 
-    "Question", {
-        hasCorrect: false
-    },
-    "Message", {
-        hideProgressBar: true
 
-//  Set the Prolific Academic Completion URL
 var sendingResultsMessage = "Vă rugăm să aşteptaţi. Răspunsurile dumneavoastră se trimit serverului."; 
 var completionMessage = "Mulţumim pentru participare!"
 ;
@@ -44,7 +26,13 @@ var defaults = [
     "Separator", {
         transfer: 1000,                                      // How long between sentences? (ms)
         normalMessage: " "  // What is message presented between stims? Can be blank.
-    }
+    },
+    "Question", {
+        hasCorrect: false
+    },
+    "Message", {
+        hideProgressBar: true
+    
 ];
 
 // Items array.
